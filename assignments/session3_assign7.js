@@ -1,3 +1,6 @@
+// Exercise 7: The "this" Detective
+// Scenario: The code below is broken (it logs undefined).
+
 // const user = {
 //     name: "Alex",
 //     greet: () => {

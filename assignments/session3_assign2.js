@@ -1,4 +1,6 @@
-// Pagination logic
+// Exercise 2: Pagination Logic
+// Scenario: You have a list of 10 items. You need to simulate "Page 2" of a table, displaying only items 4, 5, and 6
+
 
 let items = prompt("Enter items separated by commas:").split(",")
 

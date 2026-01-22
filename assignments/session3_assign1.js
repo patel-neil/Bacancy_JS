@@ -1,4 +1,6 @@
-//URL slug generator
+//Exercise 1: The URL Slug Builder
+//Scenario: You have a blog post title, and you need to generate a URL-friendly "slug" (lowercase, hyphen-separated).
+
 
 let input = prompt("Enter a string: ");
 
