@@ -3,6 +3,7 @@
 
 let Settings = {
     theme: "light",
+    fontSize : "medium",
     notification : true
 }
 
