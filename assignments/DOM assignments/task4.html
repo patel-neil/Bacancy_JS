@@ -1,0 +1,42 @@
+<!-- 
+4) Create a <div> with a black border and white background.
+Define a CSS class .active that changes the background to green and text color to white.
+On click, toggle the .active class using classList.toggle().
+ -->
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Task 4</title>
+        <style>
+            .box{
+                width: 200px;
+                padding: 40px;
+                text-align: center;
+                border: 2px solid black;
+                background-color: white;
+                color: black;
+                cursor: pointer;
+                font-family: Arial, sans-serif;
+                transition: all 0.3s ease;
+            }
+
+        .active{
+            background-color: green;
+            color: white;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box">Click me to toggle</div>
+
+        <script>
+            const boxdiv = document.getElementById("box");
+
+            boxdiv.addEventListener('click', () => {
+                boxdiv.classList.toggle('active');
+            })
+        </script>
+    </body>
+</html>
