@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from "react";
+import SearchBar from "./SearchBar";
+import SortDropdown from "./SortDropdown";
+import ProductList from "./ProductList";
+import CartIcon from "./CartIcon";
+import Cart from "./Cart";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -8,6 +13,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("");
+  const [isCartOpen, setisCartOpen] = useState(false);
 
   const fetchProducts = async (page, searchTerm) => {
     try {
@@ -53,45 +59,27 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ marginBottom: "10px" }}>
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={searchTerm}
-          onChange={(e) => {
-            setPage(1);
-            setSearchTerm(e.target.value);
-          }}
-        />
-      </div>
 
-      <div>
-        <select
-          value={sortOrder}
-          onChange={(e) => {
-            setPage(1);
-            setSortOrder(e.target.value);
-          }}
-        >
-          <option value="">Sort by Rating</option>
-          <option value="asc">Low → High</option>
-          <option value="desc">High → Low</option>
-        </select>
-      </div>
+      <CartIcon 
+      onClick={() => setisCartOpen(true)}
+      />
 
-      <div className="home">
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ul>
-            {products.map((item) => (
-              <li key={item.id}>
-                {item.title} ({item.rating})
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <SearchBar
+      searchTerm={searchTerm}
+      setSearchTerm={setSearchTerm}
+      setPage={setPage} 
+      />
+
+      <SortDropdown
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+        setPage={setPage}
+      />
+
+      <ProductList 
+        products={products} 
+        loading={loading} 
+      />
 
       <div className="paging-tab">
         <button onClick={() => setPage(page - 1)} disabled={page === 1}>
@@ -109,6 +97,10 @@ export default function Home() {
           Next
         </button>
       </div>
+      <Cart
+        isOpen={isCartOpen}
+        onClose={() => setisCartOpen(false)}
+      />
     </>
   );
 }
